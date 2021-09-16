@@ -1,0 +1,58 @@
+U:
+Build an image repository.
+It's an open-ended challenge, so it seems like I can approach it however I want.
+This is a blessing and a curse.
+It means I have to do a lot more upfront work to nail down a design.
+It means I have to take ownership over practically every decision.
+In this case, it is compounded by the fact that I've never built something like
+ this before.
+I guess that's the point. It's a novel problem.
+
+So what does an image repository need?
+I think I'd first like to focus on adding and removing images.
+How are people going to use this program? I guess I'll probably want to have 
+ some kind of front-end.
+Flask app on Heroku should work for these purposes. I only have until next 
+ Tuesday. I should stick to technology I already know.
+I really want this to be polished so it'll stand out, as well. So sticking to a 
+ simple Flask app will ensure I can get a prototype up quickly.
+
+MVP:
+As a user:
+I want to be able to upload image files.
+I want to be able to add them one at a time or in bulk.
+I want to be able to remove images I've uploaded, one at a time or in bulk.
+I want to be able to make an account and have a passphrase emailed to me.
+I want to be able to login to my account to upload private images.
+I want to be able to view a gallery of random public images.
+I want to be able to report images that violate the Terms of Service.
+I want to be able to hide images.
+
+As an administrator, I want to be able to delete images that violate the Terms 
+ of Service.
+
+
+P:
+How are we going to store the image files?
+Is this a good opportunity to use a MySQL database?
+What databases (RDBMS?) are supported on Heroku?
+Okay, it looks like Postgres is natively available on Heroku, so might as well just go with that.
+A free plan gives me 1 GB of storage, which is enough for my purposes right now.
+Let's cap image size at 1 MB, just for kicks, just for old times sake, here we are on Web 1.0.
+
+We'll need a login mechanism. Maybe not even a login screen. Maybe I don't even want people's emails.
+Just give em a passphrase they can enter to maintain access control over their uploads.
+So that's not even a page, that's just a box.
+
+In that case, maybe our main page is just the image gallery of random uploaded images.
+When user uploads an image, it'll appear under heading "Your Images."
+When user clicks on an image, it opens full-size in a new tab.
+Beneath each of a user's images appear image options: make private/public, delete, info
+Info button appears beneath all images, and displays metadata such as date of upload, file size, and image dimensions.
+
+What to use for authentication?
+Looks like Flask-Login probably has us covered.
+
+Don't forget to test!!!
+
+Alright, let's get a starter Flask app onto Heroku that we can build upon.
